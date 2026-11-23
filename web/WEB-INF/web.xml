@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- 1.4.2 Q6 : listener declare ici au lieu de @WebListener -->
+    <listener>
+        <listener-class>servlets.ApplicationListener</listener-class>
+    </listener>
+
+    <!-- 1.4.1 Q3 : LoggingFilter declare ici au lieu de @WebFilter("/*") -->
+    <filter>
+        <filter-name>LoggingFilter</filter-name>
+        <filter-class>servlets.LoggingFilter</filter-class>
+        <init-param>
+            <param-name>logPrefix</param-name>
+            <param-value>[LoggingFilter]</param-value>
+        </init-param>
+    </filter>
+
+    <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>servlets.SecurityFilter</filter-class>
+    </filter>
+
+    <!-- 1.4.1 Q6 : l'ordre des filter-mapping donne l'ordre d'execution des filtres -->
+    <filter-mapping>
+        <filter-name>LoggingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/ListItems</url-pattern>
+    </filter-mapping>
+
+    <!-- 1.1 Q3 : deux URLs pour la meme servlet -->
+    <servlet>
+        <servlet-name>FormServlet</servlet-name>
+        <servlet-class>servlets.FormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FormServlet</servlet-name>
+        <url-pattern>/FormServlet</url-pattern>
+        <url-pattern>/Form_Servlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReadCookie</servlet-name>
+        <servlet-class>servlets.ReadCookie</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReadCookie</servlet-name>
+        <url-pattern>/ReadCookie</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VisitCounter</servlet-name>
+        <servlet-class>servlets.VisitCounter</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VisitCounter</servlet-name>
+        <url-pattern>/VisitCounter</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowSession</servlet-name>
+        <servlet-class>servlets.ShowSession</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowSession</servlet-name>
+        <url-pattern>/ShowSession</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListItems</servlet-name>
+        <servlet-class>servlets.ListItems</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListItems</servlet-name>
+        <url-pattern>/ListItems</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>servlets.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>servlets.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AttributeTest</servlet-name>
+        <servlet-class>servlets.AttributeTest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AttributeTest</servlet-name>
+        <url-pattern>/AttributeTest</url-pattern>
+    </servlet-mapping>
+
+    <!-- 3.3 : Controller MVC -->
+    <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>lab.mvc.controller.Controller</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/Controller</url-pattern>
+    </servlet-mapping>
+</web-app>

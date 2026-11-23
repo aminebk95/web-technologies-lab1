@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MVC</title>
+</head>
+<body>
+<h2>Person Information (MVC)</h2>
+
+<form action="../Controller" method="post">
+    First name: <input type="text" name="firstName" required><br><br>
+    Last name: <input type="text" name="lastName" required><br><br>
+    Birth day (mm/dd/yyyy): <input type="text" name="birthDay" required
+        pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"><br><br>
+    Sex:
+    <input type="radio" name="sex" value="Male" required> Male
+    <input type="radio" name="sex" value="Female"> Female<br><br>
+    <input type="submit" value="Send">
+</form>
+
+<p><a href="../index.html">Back</a></p>
+</body>
+</html>

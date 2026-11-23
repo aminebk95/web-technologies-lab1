@@ -1,0 +1,20 @@
+# Classes compilées (générées par deploy.bat directement dans Tomcat)
+*.class
+
+# Fichiers temporaires LaTeX
+rapport/*.aux
+rapport/*.log
+rapport/*.out
+rapport/*.toc
+rapport/*.synctex.gz
+rapport/*.fdb_latexmk
+rapport/*.fls
+
+# Éditeurs / système
+.vscode/
+.idea/
+Thumbs.db
+
+# Captures du rapport (non versionnées)
+rapport/images/
+rapport/rapport.tex
